@@ -1,0 +1,82 @@
+{
+  "generated_at_utc": "2026-07-30T13:44:40.286209+00:00",
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.22631-SP0",
+    "torch": "2.11.0+cu128",
+    "torch_cuda_runtime": "12.8",
+    "cuda_available": true,
+    "device": {
+      "index": 0,
+      "name": "NVIDIA GeForce GTX 1650",
+      "compute_capability": [
+        7,
+        5
+      ],
+      "multiprocessor_count": 14,
+      "total_memory_bytes": 4294639616
+    },
+    "nvrtc_route": "PyTorch-bundled NVRTC -> PTX -> CUDA Driver API -> current PyTorch stream"
+  },
+  "methodology": {
+    "warmup": 10,
+    "iterations": 50,
+    "timer": "CUDA Event on current PyTorch stream",
+    "correctness": "torch.testing.assert_close against PyTorch reference",
+    "performance_threshold_in_tests": false
+  },
+  "transpose_2048": {
+    "shape": [
+      2048,
+      2048
+    ],
+    "bytes_moved": 33554432,
+    "naive": {
+      "iterations": 50,
+      "p50_ms": 0.952351987361908,
+      "p95_ms": 1.1712384104728697,
+      "mean_ms": 0.9724057602882386,
+      "min_ms": 0.9466559886932373,
+      "max_ms": 1.272447943687439,
+      "effective_bandwidth_gbps_p50": 35.23322515758957
+    },
+    "tiled": {
+      "iterations": 50,
+      "p50_ms": 0.24164800345897675,
+      "p95_ms": 0.2661439940333366,
+      "mean_ms": 0.24560512036085128,
+      "min_ms": 0.225600004196167,
+      "max_ms": 0.3052479922771454,
+      "effective_bandwidth_gbps_p50": 138.85664900888102
+    }
+  },
+  "fused_bias_relu": {
+    "shape": [
+      4096,
+      1024
+    ],
+    "eager": {
+      "iterations": 50,
+      "p50_ms": 0.419840008020401,
+      "p95_ms": 0.5826384052634233,
+      "mean_ms": 0.4427001613378525,
+      "min_ms": 0.4161919951438904,
+      "max_ms": 0.8011839985847473
+    },
+    "fused": {
+      "iterations": 50,
+      "p50_ms": 0.26009601354599,
+      "p95_ms": 0.2653504088521004,
+      "mean_ms": 0.25015424072742465,
+      "min_ms": 0.21663999557495117,
+      "max_ms": 0.28672000765800476
+    },
+    "p50_speedup": 1.6141731751154471
+  },
+  "scope": [
+    "single NVIDIA GPU",
+    "kernel-only timing",
+    "Windows WDDM scheduling may affect tails",
+    "no NCCL, RDMA, RoCE or multi-node measurement"
+  ]
+}
