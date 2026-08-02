@@ -12,6 +12,7 @@ dependencies = []
 
 [project.optional-dependencies]
 cuda = ["torch>=2.5"]
+extension = ["torch>=2.5", "ninja>=1.11"]
 dev = ["pytest>=8", "ruff>=0.6"]
 
 [tool.setuptools.packages.find]
@@ -24,4 +25,3 @@ addopts = "-ra"
 [tool.ruff]
 line-length = 100
 target-version = "py310"
-

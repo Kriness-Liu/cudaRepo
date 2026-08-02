@@ -7,4 +7,7 @@ __pycache__/
 build/
 dist/
 results/latest.json
-
+results/extension_latest.json
+nsight/
+src/cudarepo/_C*.pyd
+src/cudarepo/_C*.so
